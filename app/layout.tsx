@@ -18,20 +18,19 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-    <html lang="en">
-      <body className={inter.className}>
-      <SignedIn>
-        <NavBar/>
-      {children}
-      </SignedIn>
-      <SignedOut>
-        <SignIn  routing="hash" />  
-      </SignedOut>
-        
-        
+      <html lang="en">
+      <body>
+          <SignedIn>
+            <NavBar />
+            <div>{children}</div>
+          </SignedIn>
+          <SignedOut>
+            <div className="flex items-center justify-center min-h-screen">
+              <SignIn routing="hash" /> 
+            </div>
+          </SignedOut>
         </body>
-      
-    </html>
+      </html>
     </ClerkProvider>
   );
 }
