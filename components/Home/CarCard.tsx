@@ -1,15 +1,22 @@
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaGasPump } from 'react-icons/fa'
 import { MdAirlineSeatReclineNormal } from 'react-icons/md'
 import { PiSteeringWheelFill } from 'react-icons/pi'
 
 
 function CarCard(props: any) {
-    const [car, setCar] = useState(props.car)
-    return (
-        <div className='group bg-gray-50 hover:bg-white hover:border cursor-pointer duration-300
-        border-blue-500 rounded-lg p-5 shadow-md max-w-sm mx-auto'>
+    const [car, setCar] = useState<any>();
+
+    useEffect(()=>{
+        if (props.car) {
+            setCar(props.car)
+        }
+    },[props.car])
+
+    return car&&(
+        <div className='group bg-white hover:border cursor-pointer duration-300
+        border-blue-500 rounded-lg p-5 shadow-md max-w-sm mx-auto mb-12'>
            <h2 className='text-[20px] font-medium mb-2'>{car.name}</h2>
            <h2 className='text-[28px] font-bold mb-2'>
                <span className='text-[12px] font-light'> ₱ </span>
